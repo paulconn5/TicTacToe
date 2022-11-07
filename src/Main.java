@@ -31,7 +31,7 @@ public class Main {
                     } else {System.out.println("Position is occupied!");}
                 } while (!p1Done);
 
-                if (checkBoard(board, totalMoves)) {
+                if (!checkBoard(board, totalMoves)) {
                     isActive = false;
                     break; }
 
@@ -48,7 +48,7 @@ public class Main {
                     } else {System.out.println("Position is occupied!");}
                 } while(!p2Done);
 
-                if (checkBoard(board, totalMoves)) {
+                if (!checkBoard(board, totalMoves)) {
                     isActive = false;
                     break; }
 
