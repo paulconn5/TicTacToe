@@ -31,7 +31,10 @@ public class Main {
                     } else {System.out.println("Position is occupied!");}
                 } while (!p1Done);
 
-                if (checkBoard(board, totalMoves)) { break; }
+                if (checkBoard(board, totalMoves)) {
+                    isActive = false;
+                    break; }
+
 
                 do {
                     //Player 2 turn
@@ -45,7 +48,9 @@ public class Main {
                     } else {System.out.println("Position is occupied!");}
                 } while(!p2Done);
 
-                if (checkBoard(board, totalMoves)) { break; }
+                if (checkBoard(board, totalMoves)) {
+                    isActive = false;
+                    break; }
 
             } while(isActive);
             done = getYNConfirm(in, "Would you like to keep playing? [Y/N]");
