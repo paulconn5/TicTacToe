@@ -31,25 +31,7 @@ public class Main {
                     } else {System.out.println("Position is occupied!");}
                 } while (!p1Done);
 
-                if (checkConditions(board, "X")) {
-                    displayBoard(board);
-                    System.out.println("\nPlayer X wins!");
-                    isActive = false;
-                    break;
-                }
-                if (checkConditions(board, "O")) {
-                    displayBoard(board);
-                    System.out.println("\nPlayer O wins!");
-                    isActive = false;
-                    break;
-                }
-                //Check if the board is full
-                if ( totalMoves >= 9) {
-                    displayBoard(board);
-                    System.out.println("\nIts a tie!");
-                    isActive = false;
-                    break;
-                }
+                if (checkBoard(board, totalMoves)) { break; }
 
                 do {
                     //Player 2 turn
@@ -63,12 +45,34 @@ public class Main {
                     } else {System.out.println("Position is occupied!");}
                 } while(!p2Done);
 
+                if (checkBoard(board, totalMoves)) { break; }
+
             } while(isActive);
             done = getYNConfirm(in, "Would you like to keep playing? [Y/N]");
         } while(!done);
 
     }
 
+    private static boolean checkBoard(String[][] board, int totalMoves){
+        boolean isActive = true;
+        if (checkConditions(board, "X")) {
+            displayBoard(board);
+            System.out.println("\nPlayer X wins!");
+            isActive = false;
+        }
+        if (checkConditions(board, "O")) {
+            displayBoard(board);
+            System.out.println("\nPlayer O wins!");
+            isActive = false;
+        }
+        //Check if the board is full
+        if ( totalMoves >= 9) {
+            displayBoard(board);
+            System.out.println("\nIts a tie!");
+            isActive = false;
+        }
+        return isActive;
+    }
     //Player Input move
     private static void playerMove (String[][] board, String player, int row, int column) {
         if (player.equalsIgnoreCase("X")) {
